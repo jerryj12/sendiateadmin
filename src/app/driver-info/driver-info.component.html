@@ -1,0 +1,120 @@
+<mat-toolbar>
+  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+    <mat-chip style="background-color: rgb(255, 255, 255)">
+      <span
+        style="
+          color: white;
+          justify-content: left;
+          font-size: 25px;
+          padding-top: 15px;
+        "
+        ><img src="assets/logo.jpeg" width="200px"
+      /></span>
+    </mat-chip>
+  </mat-chip-list>
+  <span class="example-spacer"></span>
+  <a (click)="goToHome()">Home</a>
+  <a (click)="goToDrivers()">Riders</a>
+  <a (click)="goToPassengers()">Customers</a>
+  <a (click)="goToOrders()" style="margin-right: 20px">Orders</a>
+
+  <!-- <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span> -->
+  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+    <a (click)="logout()" class="logoutButton">Log out</a>
+  </mat-chip-list>
+</mat-toolbar>
+  <div class="background">
+    <h1>Sendiate Rider Information</h1>
+  </div>
+
+  <!-- Cards with media area -->
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title
+        >{{ driverInfo?.displayName }}
+        {{ driverInfo?.lastName }}</mat-card-title
+      >
+      <mat-card-subtitle
+        >{{ driverInfo?.carBrand }} {{ driverInfo?.carModel }}
+        </mat-card-subtitle
+      >
+      <mat-card-subtitle>Ratings: {{ driverInfo?.ratings }}</mat-card-subtitle>
+      <img mat-card-sm-image src="{{ driverInfo?.photoURL }}" />
+    </mat-card-title-group>
+    <mat-card-content>
+      <h4>
+        Date of Birth: {{ driverInfo?.date_of_birth }}<br />
+        Phone : {{ driverInfo?.phone }} <br />
+        Email: {{ driverInfo?.email }}<br />
+        Home Address: {{ driverInfo?.address }}
+        <br />
+        Trade MoterCycle: {{ driverInfo?.tradeMoterCycl }}<br />
+        Trade PhoneNo: {{ driverInfo?.tradePhoneNo }}<br />
+        Rate Per Km: {{ driverInfo.RatePerKm }} <br />
+
+        Driver License: <br />
+      </h4>
+      <img
+        src="{{ driverInfo.frontCNIC }}"
+        height="100px"
+        width="100px"
+        style="margin: 5px"
+      />
+      <img
+        src="{{ driverInfo.frontCNIC }}"
+        height="100px"
+        width="100px"
+        style="margin: 5px"
+      />
+    </mat-card-content>
+  </mat-card>
+
+  <div class="background">
+    <h1>Rider trip list</h1>
+
+    <table
+      mat-table
+      [dataSource]="orders[0]"
+      class="mat-elevation-z8"
+      *ngIf="orders"
+    >
+      <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>Start Address</th>
+        <td mat-cell *matCellDef="let element">{{ element.originAddress }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef>End Address</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.destinationAddress }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="carType">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.totalPayment }} GH₵
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+

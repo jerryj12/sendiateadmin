@@ -1,0 +1,94 @@
+<mat-toolbar>
+  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+    <mat-chip style="background-color: rgb(255, 255, 255)">
+      <span
+        style="
+          color: white;
+          justify-content: left;
+          font-size: 25px;
+          padding-top: 15px;
+        "
+        ><img src="assets/logo.jpeg" width="200px"
+      /></span>
+    </mat-chip>
+  </mat-chip-list>
+  <span class="example-spacer"></span>
+  <a (click)="goToHome()">Home</a>
+  <a (click)="goToDrivers()">Riders</a>
+  <a (click)="goToPassengers()">Customers</a>
+  <a (click)="goToOrders()" style="margin-right: 20px">Orders</a>
+
+  <!-- <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span> -->
+  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+    <a (click)="logout()" class="logoutButton">Log out</a>
+  </mat-chip-list>
+</mat-toolbar>
+<div class="background">
+  <h1>Sendiate Customer Information</h1>
+</div>
+
+<mat-card class="example-card">
+  <mat-card-title-group>
+    <mat-card-title
+      >{{ userInfo?.displayName }} {{ userInfo?.lastName }}</mat-card-title
+    >
+    <mat-card-subtitle>Sendiate Customer Information</mat-card-subtitle>
+    <img mat-card-sm-image src="{{ userInfo?.photoURL }}" />
+  </mat-card-title-group>
+  <mat-card-content>
+    Phone : {{ userInfo?.phone }} , Email: {{ userInfo?.email }}
+  </mat-card-content>
+</mat-card>
+
+<div class="background">
+  <h1>Customer trip list</h1>
+
+  <table
+    mat-table
+    [dataSource]="orders[0]"
+    class="mat-elevation-z8"
+    *ngIf="orders"
+  >
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef>Start Location</th>
+      <td mat-cell *matCellDef="let element">{{ element.originAddress }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef>End Location</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.destinationAddress }}
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="carNumber">
+      <th mat-header-cell *matHeaderCellDef>Car Number</th>
+      <td mat-cell *matCellDef="let element">{{ element.carNumber }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="carType">
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let element">{{ element.totalPayment }} GH₵</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

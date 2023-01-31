@@ -1,0 +1,39 @@
+<mat-toolbar>
+  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+    <mat-chip style="background-color: rgb(255, 255, 255)">
+      <span
+        style="
+          color: white;
+          justify-content: left;
+          font-size: 25px;
+          padding-top: 15px;
+        "
+        ><img src="assets/logo.jpeg" width="200px"
+      /></span>
+    </mat-chip>
+  </mat-chip-list>
+  <span class="example-spacer"></span>
+
+  <a (click)="goToHome()">Home</a>
+  <a (click)="goToDrivers()">Riders</a>
+  <a (click)="goToPassengers()">Customers</a>
+  <a (click)="goToOrders()" style="margin-right: 20px">Orders</a>
+
+  <!-- <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span> -->
+  <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+    <a (click)="logout()" class="logoutButton">Log out</a>
+  </mat-chip-list>
+</mat-toolbar>
+<div class="background">
+  <img src="assets/logo.jpeg" width="450px" />
+  <h1>Sendiate's Admin Dashboard</h1>
+</div>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sendiate-app": {
+      "hosting": {
+        "superAdmin": [
+          "sendiate-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sendiate-app"
+  }
+}
